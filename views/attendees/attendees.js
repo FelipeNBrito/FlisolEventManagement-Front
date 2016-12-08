@@ -36,11 +36,11 @@ app.controller('AttendeesCtrl', ['$scope', '$rootScope', '$http', '$state', '$fi
   }
 
   $scope.accreditAttendee = function(attendeeId) {
+
     $http.put(config.server + '/private/attendee/accredit/' + attendeeId)
     .then(function(response){
         if (response.data.success) {
-          $scope.people.push(response.data.attendee);
-          Notification.success({message:$filter('translate')('ADMINISTRATOR_ADD_SUCCESS'), dalay:4000});
+          Notification.success({message:$filter('translate')('ATTENDEE_ACCREDIT_SUCCESS'), dalay:4000});
 
           for (var i = 0; i < $scope.people.length; i++) {
             if ($scope.people[i]._id === attendeeId) {
@@ -51,7 +51,7 @@ app.controller('AttendeesCtrl', ['$scope', '$rootScope', '$http', '$state', '$fi
         }
 
     }, function(error){
-      Notification.error({message:$filter('translate')('PADMINISTRATOR_ADD_ERROR'), dalay:4000});
+      Notification.error({message:$filter('translate')('ATTENDEE_ACCREDIT_ERROR'), dalay:4000});
     });
   }
 
