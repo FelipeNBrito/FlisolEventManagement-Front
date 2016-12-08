@@ -18,7 +18,7 @@ app.controller('SpeakersCtrl', ['$scope', '$rootScope', '$http', '$state', '$fil
   $scope.speaker = {};
 
 
-  $scope.addAttendee = function(){
+  $scope.addSpeaker= function(){
 
 
     $http.post(config.server + '/private/speaker/', $scope.speaker)
