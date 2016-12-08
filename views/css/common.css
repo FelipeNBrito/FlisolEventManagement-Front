@@ -1,0 +1,305 @@
+body {
+  background: #e5e5e5;
+}
+
+table tr td{
+  text-transform: uppercase;
+}
+
+h1{
+  margin-left:10px;
+}
+
+*{
+  text-overflow: ellipsis;
+}
+
+input[type="checkbox"]:checked+label:before{
+  border-right:2px solid #01579b;
+  border-bottom: 2px solid #01579b;
+}
+
+.filled-in:checked+label::before{
+  border-right: 2px solid transparent !important;
+  border-bottom: 2px solid transparent !important;
+  border-right: 2px solid #fff !important;
+  border-bottom: 2px solid #fff !important;
+}
+
+.filled-in:checked+label:after{
+  border-color: #01579b !important;
+  background-color: #01579b !important;
+}
+
+.userInfo label{
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.userInfo p{
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.userInfo .info{
+  margin-bottom: 30px;
+}
+
+.userInfo .info i{
+  margin-right: 5px;
+}
+
+.userInfo a{
+  color: #101010;
+  text-decoration: underline;
+}
+
+input:not([type]):focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #01579b;
+  box-shadow: 0 1px 0 0 #01579b;
+}
+
+input:not([type]).valid, input:not([type]):focus.valid,
+input[type=text].valid,
+input[type=text]:focus.valid,
+input[type=password].valid,
+input[type=password]:focus.valid,
+input[type=email].valid,
+input[type=email]:focus.valid,
+input[type=url].valid,
+input[type=url]:focus.valid,
+input[type=time].valid,
+input[type=time]:focus.valid,
+input[type=date].valid,
+input[type=date]:focus.valid,
+input[type=datetime].valid,
+input[type=datetime]:focus.valid,
+input[type=datetime-local].valid,
+input[type=datetime-local]:focus.valid,
+input[type=tel].valid,
+input[type=tel]:focus.valid,
+input[type=number].valid,
+input[type=number]:focus.valid,
+input[type=search].valid,
+input[type=search]:focus.valid,
+textarea.materialize-textarea.valid,
+textarea.materialize-textarea:focus.valid {
+  border-bottom: 1px solid #01579b;
+  box-shadow: 0 1px 0 0 #01579b;
+}
+
+input:not([type]):focus:not([readonly]) + label,
+input[type=text]:focus:not([readonly])+label,
+input[type=password]:focus:not([readonly]) + label,
+input[type=email]:focus:not([readonly])+label,
+input[type=url]:focus:not([readonly])+label,
+input[type=time]:focus:not([readonly]) + label,
+input[type=date]:focus:not([readonly])+label,
+input[type=datetime]:focus:not([readonly])+label,
+input[type=datetime-local]:focus:not([readonly])+label,
+input[type=tel]:focus:not([readonly])+label,
+input[type=number]:focus:not([readonly])+label,
+input[type=search]:focus:not([readonly])+label,
+textarea.materialize-textarea:focus:not([readonly])+label {
+  color: #01579b;
+}
+
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
+    border: 2px solid #01579b;
+}
+
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after {
+    background-color: #01579b;
+}
+
+.picker__date-display{
+  background-color: #283593;
+}
+
+.picker__close, .picker__today, .picker__day.picker__day--today{
+  color: #1a237e;
+}
+
+.picker__nav--prev:hover, .picker__nav--next:hover{
+  background-color: #3949ab;
+}
+
+.picker__nav--prev:hover::before{
+  border-right: 0.75em solid #fff;
+}
+
+.picker__nav--next:hover::before{
+  border-left: 0.75em solid #fff;
+}
+
+.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected{
+  background-color: #3949ab;
+}
+
+.picker__weekday-display{
+  background-color: #1a237e;
+}
+
+.chips.focus{
+  border-bottom: 1px solid #01579b !important;
+  box-shadow: 0 1px 0 0 #01579b !important;
+}
+
+.chip{
+  background-color: #01579b;
+  color: #FFF;
+}
+
+.chip.selected{
+  background-color: rgba(1,87,155, 0.8) !important;
+}
+
+.tabs .tab a {
+  color: #01579b;
+}
+
+.tabs .tab a:hover {
+  color: rgba(1,87,155, 0.5);
+}
+
+.tabs .indicator{
+  background-color: #01579b;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+a.disabled{
+  text-decoration: none !important;
+  cursor: text;
+  opacity: 0.5;
+}
+
+.footer-language a:hover{
+  text-decoration: underline;
+}
+
+.input-field .prefix.active{
+  color: #01579b;
+}
+
+.progress{
+  background-color: #e1f5fe;
+}
+
+.progress .determinate, .progress .indeterminate{
+  background-color: #1a237e;
+}
+
+.clockpicker-display{
+  color: #e1f5fe;
+}
+
+.md-chips{
+  border-bottom: 1px solid #9e9e9e;
+  box-shadow:0 0 0;
+}
+
+.md-chips.md-focused{
+  border-bottom: none;
+}
+
+md-content{
+  background-color: inherit;
+}
+
+.autocomplete{
+  overflow: hidden;
+}
+
+.autocomplete input[type=search]:focus:not([readonly]){
+  border:none;
+  box-shadow: 0 0 0;
+}
+
+md-chips.md-default-theme md-chip, md-chips md-chip{
+  background-color: #01579b;
+  color: #fff;
+}
+
+md-chips.md-default-theme md-chip md-icon, md-chips md-chip md-icon{
+  color: #fff;
+}
+
+@media screen and (max-width: 500px){
+  h1{
+    font-size: 2.5em !important;
+  }
+
+  .ui-notification{
+    width: 200px !important;
+    max-width: 100vw !important;
+  }
+}
+
+
+tr{
+  outline: none !important;
+}
+
+.dropdown-content li>a, .dropdown-content li>span{
+  color: #01579b;
+}
+
+.autocomplete {
+    min-height: 200px; }
+
+.veggie-option {
+    float: left;
+    width: 20%;
+    box-sizing: border-box;
+    padding: 0 8px; }
+
+.veggie-option .md-item-text {
+    padding: 8px;
+    background: #f0f0f0;
+    border-radius: 3px; }
+
+.veggie-option .md-item-text h3,
+.veggie-option .md-item-text p {
+    padding: 0;
+    margin: 0; }
+
+.btn-toggle{
+  padding: 4px 9px;
+  height: auto;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #ccc;
+}
+
+.btn-toggle:hover{
+  background-color: white;
+  color: black;
+  box-shadow: 0px 0px 0px;
+}
+
+.btn-toggle.active{
+  background-color: #01579b;
+  box-shadow: inset 0 3px 5px rgba(0,0,0,.225);
+  color: white;
+}

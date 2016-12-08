@@ -1,0 +1,51 @@
+<div class="navbar-fixed" ng-controller="appCtrl">
+
+  <ul id="settingsDropdown" class="dropdown-content">
+    <li ui-sref-active="active">
+      <a href=""  ui-sref="logout" class="blue-text text-darken-4"><i class="blue-text text-darken-4 fa fa-sign-out left"></i> {{'LOGOUT' | translate}}</a>
+    </li>
+  </ul>
+
+  <nav id="header">
+    <div class="nav-wrapper grey lighten-3">
+      <div class="row">
+        <a href="" id="menuMobile" data-activates="mobile-demo" class="button-collapse blue-text text-darken-4 left"><i class="fa fa-bars"></i></a>
+        <a href="" ui-sref="home" class="brand-logo blue-text text-darken-4" ng-class="{'center': !isLogged()}"><img ng-src="/images/logo.png"></a>
+        <div class="hide-on-med-and-down">
+          <ul class="hide-on-med-and-down right" ng-show="isLogged()">
+            <li ui-sref-active="active">
+              <a href="" ui-sref="home"  class="blue-text text-darken-4">
+                <i class="fa fa-home"></i>
+                <span>{{'HOME' | translate}}</span>
+              </a>
+            </li>
+            <li ui-sref-active="active">
+              <a href="" class="blue-text text-darken-4 dropdown-button" data-belowOrigin="true" data-hover="true" data-alignment="right" data-constrainWidth="false" data-activates="settingsDropdown">
+                <i class="fa fa-cog"></i>
+                <span>{{'SETTINGS' | translate}} <i class="fa fa-caret-down"></i></span>
+              </a>
+            </li>
+            <li ui-sref-active="active">
+              <a href="" class="blue-text text-darken-4 dropdown-button">
+
+              </a>
+            </li>
+          </ul>
+        </div>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a class="blue-text text-darken-4" href=""  ui-sref="logout"><i class="blue-text text-darken-4 fa fa-sign-out"></i>{{'LOGOUT' | translate}}</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+<link rel="stylesheet" href="views/header/header.css"/>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".button-collapse").sideNav();
+    $(".dropdown-button").dropdown({
+        hover:true
+    });
+  });
+</script>

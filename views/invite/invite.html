@@ -1,0 +1,241 @@
+<!-- Modal Structure -->
+<div id="editorHelper" class="modal">
+  <div class="modal-content">
+    <h4>{{'HOW_TO_USE' | translate}}</h4>
+    <p>{{'INVITE_HELPER' | translate}}</p>
+    <h5>{{'INVITE_HOTKEYS' | translate}}</h5>
+
+    <table>
+      <thead>
+        <tr>
+          <th data-field="id">{{'FILED' | translate}}</th>
+          <th data-field="name">{{'VARIABLE' | translate}}</th>
+          <th data-field="name">{{'USAGE' | translate}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{'CLIENT_NAME' | translate}}</td>
+          <td>name</td>
+          <td> {{'OPEN_MST' | translate}}name{{'CLOSE_MST' | translate}}</td>
+        </tr>
+        <tr>
+          <td>{{'CLIENT_EMAIL' | translate}}</td>
+          <td>email</td>
+          <td> {{'OPEN_MST' | translate}}email{{'CLOSE_MST' | translate}}</td>
+        </tr>
+        <tr>
+          <td>{{'CLIENT_COMPANY' | translate}}</td>
+          <td>company</td>
+          <td> {{'OPEN_MST' | translate}}company{{'CLOSE_MST' | translate}}</td>
+        </tr>
+        <tr>
+          <td>{{'CLIENT_ROLE' | translate}}</td>
+          <td>role</td>
+          <td> {{'OPEN_MST' | translate}}role{{'CLOSE_MST' | translate}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <a href="" class=" modal-action modal-close waves-effect waves-light btn-flat btn">{{'CLOSE' | translate}}</a>
+  </div>
+</div>
+
+<link href="/node_modules/angular-material/angular-material.min.css" rel="stylesheet">
+<div ng-init="init()" id="newsletter">
+  <div class="row white z-depth-1">
+    <h1>{{'INVITE' | translate}}</h1>
+    <form novalidate>
+      <div class="col l12 s12 m12 input-field">
+        <input name="subject" id="subject" type="text" ng-model="newsletter.subject" ng-required="true" ng-minlength="3" min-lenght="3" class="validate">
+        <label for="subject">{{'EMAIL_SUBJECT' | translate}}</label>
+      </div>
+
+      <md-content class="autocomplete col l12 m12 s12" layout="column">
+        <md-chips
+                ng-model="asyncContacts"
+                md-transform-chip="transformChip($chip)"
+                md-require-match="false">
+          <md-autocomplete
+                  md-selected-item="selectedItem"
+                  md-search-text="searchText"
+                  md-items="item in querySearch(searchText)"
+                  md-item-text="item.name"
+                  placeholder="{{'TO' | translate}}">
+            <span md-highlight-text="searchText">{{item.name}} :: {{item.email}}</span>
+          </md-autocomplete>
+
+          <md-chip-template>
+        <span>
+          <strong>{{$chip.name}}</strong>
+          <em>({{$chip.email}})</em>
+        </span>
+          </md-chip-template>
+        </md-chips>
+      </md-content>
+
+      <div class="col l12 s12 m12">
+        <ul class="collapsible white z-depth-1 checkboxes" data-collapsible="accordion" id="checkboxes">
+          <li>
+            <div class="collapsible-header">
+              <i class="fa fa-caret-down right blue-text text-darken-4"></i>
+              <span>{{'TO_GROUPS' | translate}}:</span>
+              <div class="chip light-blue darken-4 white-text" ng-repeat="c in checklist | filter:{value:true}">
+                {{c.name}}
+                <i class="close fa fa-times" ng-click="c.value = false"></i>
+              </div>
+            </div>
+            <div class="collapsible-body">
+              <div ng-repeat="c in checklist" ng-click="addChecklist(c)">
+                <input type="checkbox" class="filled-in" ng-model="c.value" class="blue"/>
+                <label>{{c.name}}</label>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="input-field col l12 m12 s12" ng-hide="!loadingEvents && !events.length">
+        <select id="event" ng-model="newsletter.event"  material-select watch>
+          <option value="" disabled selected>{{'CHOOSE_EVENT' | translate}}</option>
+          <option ng-repeat="e in events" value="{{e._id}}">{{e.name}}</option>
+        </select>
+        <label for="event">{{'EVENT' | translate}}</label>
+      </div>
+
+      <div class="col m12 s12 l12" ng-hide="events.length || loadingEvents">
+        {{'NO_EVENTS' | translate}}
+        <div>
+          <a href="" ui-sref="events" class="modal-action modal-close btn light-blue darken-4 waves-effect waves-light">{{'ADD_EVENT' | translate}}</a>
+        </div>
+      </div>
+
+
+      <div class="col s12 m6 l6">
+        <h3 style="display:inline-block">{{'EDIT_INVITE' | translate}}</h3>
+        <a class="btn btn-toggle right" title="{{'HTML_EDITOR' | translate}}" ng-click="editor = !(editor)" ng-class="{'active': editor}"><i class="fa fa-code"></i></a>
+
+        <div class="editor" ng-show="editor" id="editor">
+
+          <div id="progressBar" ng-show="uploader.isUploading" class="col l8 offset-l2 m8 offset-m2 s10 offset-s1">
+            <p>{{'UPLOADING_IMAGE' | translate}}</p>
+            <div class="progress">
+              <div class="determinate" ng-style="{ 'width': uploader.progress + '%' }"></div>
+            </div>
+            <a href="" ng-click="cancelUpload()">{{'CANCEL_UPLOAD' | translate}}</a>
+            <span>{{uploader.progress + '%'}}</span>
+          </div>
+          <label>{{'HTML_EDITOR' | translate}}</label>
+          <a class='right blue-text text-darken-4' href='#editorHelper' modal>{{'HOW_TO_USE' | translate}}</a>
+          <div ng-model="html_editor" ui-codemirror="{ onLoad : codemirrorLoaded }" ui-codemirror-opts="editorOptions" ng-change="editorChangedCode()"></div>
+          <form action="#">
+            <div class="file-field input-field">
+              <div class="btn waves-effect waves-light light-blue darken-4">
+                <span><i class="fa fa-picture-o right"></i>{{'ADD_IMAGE' | translate}}</span>
+                <input type="file" nv-file-select="" uploader="uploader">
+              </div>
+            </div>
+          </form>
+        </div>
+
+
+        <div class="editor" ng-hide="editor">
+          <a class='right blue-text text-darken-4' href='#editorHelper' modal>{{'HOW_TO_USE' | translate}}</a>
+          <form action="#">
+
+            <div class="input-field col s12 m12 l12">
+              <input id="title" type="text" required ng-required class="validate"  name="title" aria-required="true" ng-change="editorChanged()" ng-model="title_editor"/>
+              <label for="title">{{'TITLE' | translate}}</label>
+            </div>
+
+            <div class="input-field col s12 m12 l12">
+              <textarea id="content" name="content"  required ng-required aria-required="true" ng-init="initDoc()" ng-change="editorChanged()" ng-model="content_editor" class="materialize-textarea"/></textarea>
+              <label for="content">{{'CONTENT' | translate}}</label>
+            </div>
+
+            <div class="input-field col s12 m12 l12">
+              <input id="greeting" type="text" required ng-required class="validate"  name="greeting" aria-required="true" ng-change="editorChanged()" ng-model="greeting_editor" />
+              <label for="greeting">{{'GREETING' | translate}}</label>
+            </div>
+
+            <div class="input-field col s12 m12 l12">
+              <input id="from" type="text" required ng-required class="validate"  name="from" aria-required="true" ng-change="editorChanged()" ng-model="from_editor" />
+              <label for="from">{{'SIGNATURE' | translate}}</label>
+            </div>
+
+            <div class="input-field col s12 m12 l12">
+              <input id="buttonTitle" type="text" required ng-required class="validate"  name="buttonTitle" aria-required="true" ng-change="editorChanged()" ng-model="button_editor"/>
+              <label for="buttonTitle">{{'BUTTON_TITLE' | translate}}</label>
+            </div>
+
+            <div class="input-field col s12 m12 l12">
+              <input id="imageLink" type="text" required  class="validate"  name="imageLink" ng-change="editorChanged()" ng-model="imageLink"/>
+              <label for="imageLink">{{'IMAGE_LINK' | translate}}</label>
+            </div>
+
+            <div class="col s12 m12 l12">
+              <label for="switch">{{'CUSTOM_BUTTON_ACTION' | translate}}</label>
+
+              <div class="switch" id="switch">
+                  <label>
+                    {{'OFF' | translate}}
+                    <input type="checkbox" ng-model="switch">
+                    <span class="lever"></span>
+                    {{'ON' | translate}}
+                  </label>
+              </div>
+            </div>
+
+            <div class="input-field col s12 m12 l12" ng-show="switch">
+              <input id="buttonLink" type="text"  class="validate"  name="buttonLink" ng-model="buttonLink"/>
+               <label for="imageLink">{{'BUTTON_LINK' | translate}}</label>
+            </div>
+
+
+
+            <div class="input-field col s12 m6 l6" id="buttonColorDiv">
+              <p>{{'BUTTON_COLOR' | translate}}</p>
+              <color-picker ng-model="buttonColor"  options="options" event-api="eventApi"></color-picker>
+            </div>
+
+            <div class="input-field col s12 m6 l6" id="buttonTextColorDiv">
+              <p>{{'BUTTON_TEXT_COLOR' | translate}}</p>
+              <color-picker ng-model="buttonTextColor"  options="options" event-api="eventApi" ></color-picker>
+            </div>
+
+          </form>
+          <div id="progressBar" ng-show="uploader.isUploading" class="col l12 s12 m12">
+            <p>{{'UPLOADING_IMAGE' | translate}}</p>
+            <div class="progress">
+              <div class="determinate" ng-style="{ 'width': uploader.progress + '%' }"></div>
+            </div>
+            <a href="" ng-click="cancelUpload()">{{'CANCEL_UPLOAD' | translate}}</a>
+            <span>{{uploader.progress + '%'}}</span>
+          </div>
+            <form action="#">
+              <div class="file-field input-field">
+                <div class="btn waves-effect waves-light light-blue darken-4">
+                  <span><i class="fa fa-picture-o right"></i>{{'ADD_IMAGE' | translate}}</span>
+                  <input type="file" nv-file-select="" uploader="uploader">
+                </div>
+              </div>
+          </form>
+        </div>
+      </div>
+      <div class="col s12 m6 l6">
+        <div class="row"></div>
+        <label>{{'HTML_PREVIEW' | translate}}</label>
+        <iframe id="iframe"></iframe>
+      </div>
+      <div class="col s12 m12 l12">
+        <button type="submit" ng-click="send()" class="btn light-blue darken-4 waves-effect waves-light btn-large right"><i class="right fa fa-paper-plane"></i>{{'SEND' | translate}}</button>
+      </div>
+    </form>
+  </div>
+</div>
+<link rel="stylesheet" href="/views/invite/invite.css">
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+</script>

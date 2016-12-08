@@ -1,0 +1,55 @@
+.navbar-fixed, #header{
+    line-height: 80px;
+    height: 80px;
+}
+
+#header img{
+  width: 20%;
+}
+
+#header .brand-logo{
+  padding: 10px;
+}
+
+#header .hide-on-med-and-down > li span{
+  margin: 0;
+  display: inline;
+  text-align: center;
+  position: relative;
+  top: 18px;
+  line-height: 25px;
+}
+
+#header .hide-on-med-and-down > li > a{
+  min-width: 80px;
+  text-align: center;
+}
+
+#header .hide-on-med-and-down > li > a > i{
+  height: 0px;
+  line-height: 55px;
+  margin: 0;
+  display: block;
+  font-size: 25px;
+  text-align: center;
+}
+
+#header .side-nav i{
+  margin: 0;
+  float: none;
+}
+
+#header #menu-itens{
+  margin-left: 90px;
+}
+
+#header .hide-on-med-and-down .fa-caret-down{
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+
+#menuMobile{
+  margin-top: 10px;
+  margin-left: 10px;
+}

@@ -1,0 +1,19 @@
+<div class="container" ng-init="init()" style="padding:80px 20px">
+  <div class="row">
+    <form name="loginForm" ng-submit="login(loginForm.$valid)" novalidate class="col s12 m10 l6 offset-m1 offset-l3">
+      <h1>{{'LOGIN' | translate}}</h1>
+      <div class="input-field col l12 s12 m12">
+        <input id="email" type="text" required ng-required class="validate" placeholder="{{'EMAIL' | translate}}" ng-model="email" name="email" aria-required="true"/>
+        <label for="email">{{'EMAIL' | translate}}</label>
+      </div>
+      <div class="input-field col l12 s12 m12">
+        <input id="password" type="password" required ng-required class="validate" placeholder="{{'PASSWORD' | translate}}" ng-model="password" name="password" aria-required="true"/>
+        <label for="password">{{'PASSWORD' | translate}}</label>
+      </div>
+      <p class="red-text" ng-show="loginFailed">
+        {{'ERROR_LOGIN' | translate}}
+      </p>
+      <input class="waves-effect waves-light btn light-blue darken-4" type="submit" value="{{'LOGIN' | translate}}" ng-disabled="loginForm.$invalid && !loginForm.$pristine"/>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+{
+  "name": "projeto-mailing",
+  "description": "",
+  "main": "",
+  "authors": [
+    "mauroberto <maurorcsc@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/FelipeNBrito/projeto-mailing",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "codemirror": "^5.19.0",
+    "angular-ui-codemirror": "^0.3.0",
+    "ng-image-input-with-preview": "^0.0.6",
+    "angular-trix": "^1.0.2",
+    "angular-color-picker": "angularjs-color-picker#^2.5.0",
+    "angular-translate-interpolation-messageformat": "^2.12.1"
+  }
+}

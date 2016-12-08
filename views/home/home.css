@@ -1,0 +1,7 @@
+.info label a{
+	text-decoration: none;
+}
+
+.info label a:hover{
+	text-decoration: underline;
+}
