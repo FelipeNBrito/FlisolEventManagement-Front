@@ -24,7 +24,11 @@
 		ACCREDIT:	"Descredenciado",
 		WORKSHOPS:	"Workshops",
 		SPEECHES:	"Palestras",
-		MINICOURSES:	"Minicursos"
+		MINICOURSES:	"Minicursos",
+		ADD_SPEAKER:	"Adicionar palestrante",
+		COMPANY:	"Empresa",
+		ROLE:	"Cargo",
+		SPEAKERS:	"Palestrantes"
 };
 
 var translations_en_us = {
@@ -53,7 +57,11 @@ var translations_en_us = {
 	ACCREDIT:	"Accredit",
 	WORKSHOPS:	"Workshops",
 	SPEECHES:	"Speeches",
-	MINICOURSES:	"Minicourses"
+	MINICOURSES:	"Minicourses",
+	ADD_SPEAKER:	"Add speaker",
+	COMPANY:	"Company",
+	ROLE:	"Role",
+	SPEAKERS:	"Speakers"
 };
 
 
@@ -83,5 +91,9 @@ var translations_es_es = {
 	ACCREDIT:	"De-acreditado",
 	WORKSHOPS:	"Talleres",
 	SPEECHES:	"Conferencias",
-	MINICOURSES:	"Cursos cortos"
+	MINICOURSES:	"Cursos cortos",
+	ADD_SPEAKER:	"Agregar hablante",
+	COMPANY:	"Empresa",
+	ROLE:	"Cargo",
+	SPEAKERS:	"Hablantes"
 };
