@@ -1,5 +1,5 @@
 var config = {
-  server: "http://192.168.1.17:5051"
+  server: "https://flisoleventmanagement.herokuapp.com"
 };
 
 var app = angular.module('event', ['ui.router', 'ngCookies', 'ngMessages', 'pascalprecht.translate', 'ngSanitize',
@@ -61,6 +61,13 @@ app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'tmhDynamic
         templateUrl: '/views/speakers/speakers.html',
         authenticate: true,
         controller: 'SpeakersCtrl'
+      })
+
+      .state('speeches', {
+        url: '/speeches',
+        templateUrl: '/views/speeches/speeches.html',
+        authenticate: true,
+        controller: 'SpeechesCtrl'
       })
 
       ;
