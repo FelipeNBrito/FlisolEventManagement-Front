@@ -16,7 +16,15 @@
 		CONFIRM_DELETE_PERSON:	"Confirmar excluir pessoa",
 		YES:	"Sim",
 		NO:	"Não",
-		NO_PEOPLE:	"Não há pessoas"
+		NO_PEOPLE:	"Não há pessoas",
+		ATTENDEES:	"Participantes",
+		ADD_ATTENDEE:	"Adicionar participantes",
+		SEARCH:	"Buscar",
+		ATTENDED:	"Credenciado",
+		ACCREDIT:	"Descredenciado",
+		WORKSHOPS:	"Workshops",
+		SPEECHES:	"Palestras",
+		MINICOURSES:	"Minicursos"
 };
 
 var translations_en_us = {
@@ -37,7 +45,15 @@ var translations_en_us = {
 	CONFIRM_DELETE_PERSON:	"Confrim delete person",
 	YES:	"Yes",
 	NO:	"No",
-	NO_PEOPLE:	"No people"
+	NO_PEOPLE:	"No people",
+	ATTENDEES:	"Attendees",
+	ADD_ATTENDEE:	"Add attendees",
+	SEARCH:	"Search",
+	ATTENDED:	"Attended",
+	ACCREDIT:	"Accredit",
+	WORKSHOPS:	"Workshops",
+	SPEECHES:	"Speeches",
+	MINICOURSES:	"Minicourses"
 };
 
 
@@ -49,7 +65,7 @@ var translations_es_es = {
 	ADD_ADMINISTRATOR:	"Agregar administrador",
 	DELETE_SELECTED:	"Eliminar seleccionado",
 	SELECT_ALL:	"Seleccionar todo",
-	FIRST_NAME:	"Primer nombre",
+	FIRST_NAME:	"Primero nombre",
 	LAST_NAME:	"Apellido",
 	LOGIN:	"Iniciar sesión",
 	EMAIL:	"Email",
@@ -59,5 +75,13 @@ var translations_es_es = {
 	CONFIRM_DELETE_PERSON:	"Confirmar eliminar persona",
 	YES:	"Sí",
 	NO:	"No",
-	NO_PEOPLE:	"Sin gente"
+	NO_PEOPLE:	"Sin gente",
+	ATTENDEES:	"Asistentes",
+	ADD_ATTENDEE:	"Agregar asistentes",
+	SEARCH:	"Buscar",
+	ATTENDED:	"Acreditado",
+	ACCREDIT:	"De-acreditado",
+	WORKSHOPS:	"Talleres",
+	SPEECHES:	"Conferencias",
+	MINICOURSES:	"Cursos cortos"
 };
