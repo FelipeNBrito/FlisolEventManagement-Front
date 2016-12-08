@@ -1,0 +1,76 @@
+<div id="delete" class="modal">
+    <div class="modal-content">
+        <h4>{{'ARE_YOU_SURE' | translate}}</h4>
+        <p>{{'CONFIRM_DELETE_PERSON' | translate}}</p>
+    </div>
+    <div class="modal-footer">
+        <a href="" class="modal-action modal-close waves-effect waves-light btn red" ng-click="deletePerson()">{{'YES' | translate}}</a>
+        <a href="" class="modal-action modal-close waves-effect waves-light btn-flat">{{'NO' | translate}}</a>
+    </div>
+</div>
+
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>{{'ADD_ADMINISTRATOR' | translate}}</h4>
+
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <input ng-model="administrator.first_name" id="first_name" type="text" class="validate">
+              <label for="first_name">{{'FIRST_NAME' | translate}}</label>
+            </div>
+            <div class="input-field col s6">
+              <input ng-model="administrator.last_name" id="last_name" type="text" class="validate">
+              <label for="last_name">{{'LAST_NAME' | translate}}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input ng-model="administrator.email" id="email" type="email" class="validate">
+              <label for="email">{{'EMAIL' | translate}}</label>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a ng-click="addAdministrator()" class="modal-action modal-close waves-effect waves-green btn-flat ">{{'ADD_ADMINISTRATOR' | translate}}</a>
+    </div>
+  </div>
+
+<div ng-init="init()" id="people">
+  <div class="row white z-depth-2">
+    <h1>{{'ADMINISTRATORS' | translate}}</h1>
+
+    <div class="progress" ng-show="loading">
+      <div class="indeterminate"></div>
+    </div>
+
+    <div class="helper" ng-show="!people.length && !loading">
+      {{'NO_PEOPLE' | translate}}
+    </div>
+    <a href="#modal1"  modal class="btn waves-effect waves-light blue darken-4"><i class="fa fa-plus left"></i>{{'ADD_ADMINISTRATOR' | translate}}</a>
+    <a href="#delete" modal  class="btn waves-effect waves-light red"><i class="fa fa-trash left"></i>{{'DELETE_SELECTED' | translate}}</a>
+
+    <table class="col s12 m12 l12 responsive-table bordered highlight" ng-show="!loading && people.length">
+      <thead>
+        <tr>
+          <th data-field="c"><input type="checkbox" id="selectAll" class="filled-in blue" ng-model="all" ng-click="selectAll()"/><label for="selectAll">{{'SELECT_ALL' | translate}}</label></th>
+          <th  data-field="name">{{'FIRST_NAME' | translate}}</th>
+          <th  data-field="email">{{'LAST_NAME' | translate}}</th>
+          <th data-field="role">{{'EMAIL' | translate}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="s in people">
+          <td><input type="checkbox" class="filled-in blue" ng-model="s.value" id="{{s._id}}" /><label for="{{s._id}}"></label></td>
+          <td>{{s.first_name}}</td>
+          <td>{{s.last_name}}</td>
+          <td>{{s.email}}</td> 
+       </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<link rel="stylesheet" href="/views/administrators/administrators.css">

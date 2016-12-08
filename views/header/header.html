@@ -2,6 +2,9 @@
 
   <ul id="settingsDropdown" class="dropdown-content">
     <li ui-sref-active="active">
+      <a href=""  ui-sref="administrators" class="blue-text text-darken-4"><i class="blue-text text-darken-4 fa fa-users left"></i> {{'ADMINISTRATORS' | translate}}</a>
+    </li>
+    <li ui-sref-active="active">
       <a href=""  ui-sref="logout" class="blue-text text-darken-4"><i class="blue-text text-darken-4 fa fa-sign-out left"></i> {{'LOGOUT' | translate}}</a>
     </li>
   </ul>
@@ -19,6 +22,7 @@
                 <span>{{'HOME' | translate}}</span>
               </a>
             </li>
+
             <li ui-sref-active="active">
               <a href="" class="blue-text text-darken-4 dropdown-button" data-belowOrigin="true" data-hover="true" data-alignment="right" data-constrainWidth="false" data-activates="settingsDropdown">
                 <i class="fa fa-cog"></i>
