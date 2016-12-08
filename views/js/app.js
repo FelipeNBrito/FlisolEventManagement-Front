@@ -49,6 +49,13 @@ app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'tmhDynamic
         controller: 'AdministratorsCtrl'
       })
 
+      .state('attendees', {
+        url: '/attendees',
+        templateUrl: '/views/attendees/attendees.html',
+        authenticate: true,
+        controller: 'AttendeesCtrl'
+      })
+
       ;
 
       $urlRouterProvider.otherwise('home');

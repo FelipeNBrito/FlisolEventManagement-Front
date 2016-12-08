@@ -1,13 +1,12 @@
-app.controller('AdministratorsCtrl', ['$scope', '$rootScope', '$http', '$state', '$filter', 'Notification', 'authService', function ($scope, $rootScope, $http, $state, $filter, Notification, authService) {
+app.controller('AttendeesCtrl', ['$scope', '$rootScope', '$http', '$state', '$filter', 'Notification', 'authService', function ($scope, $rootScope, $http, $state, $filter, Notification, authService) {
 
   $scope.people = [];
 
   $scope.init = function () {
     $scope.loading = true;
-    $http.get(config.server + '/private/administrator').then(function(response){
+    $http.get(config.server + '/private/attendee').then(function(response){
       if(response.data.success){
-        $scope.people = response.data.administrators;
-        console.log(response.data.administrators);
+        $scope.people = response.data.attendees;
       }
 
       $scope.loading = false;
@@ -19,22 +18,41 @@ app.controller('AdministratorsCtrl', ['$scope', '$rootScope', '$http', '$state',
   $scope.attendee = {};
 
 
-  $scope.addAdministrator = function(){
+  $scope.addAttendee = function(){
 
-    console.log($scope.administrator);
 
-    $http.post(config.server + '/private/attendee/', $scope.attendee)
+    $http.post(config.server + '/public/attendee/', $scope.attendee)
     .then(function(response){
         if (response.data.success) {
           $scope.people.push(response.data.administrator);
-          Notification.success({message:$filter('translate')('ATTENDEE_ADD_SUCCESS'), dalay:4000});
+          Notification.success({message:$filter('translate')('ADMINISTRATOR_ADD_SUCCESS'), dalay:4000});
         }
 
     }, function(error){
-      Notification.error({message:$filter('translate')('ATTENDEE_ADD_ERROR'), dalay:4000});
+      Notification.error({message:$filter('translate')('PADMINISTRATOR_ADD_ERROR'), dalay:4000});
     });
 
 
+  }
+
+  $scope.accreditAttendee = function(attendeeId) {
+    $http.put(config.server + '/private/attendee/accredit/' + attendeeId)
+    .then(function(response){
+        if (response.data.success) {
+          $scope.people.push(response.data.attendee);
+          Notification.success({message:$filter('translate')('ADMINISTRATOR_ADD_SUCCESS'), dalay:4000});
+
+          for (var i = 0; i < $scope.people.length; i++) {
+            if ($scope.people[i]._id === attendeeId) {
+              $scope.people[i].attended = true;
+            }
+          }
+
+        }
+
+    }, function(error){
+      Notification.error({message:$filter('translate')('PADMINISTRATOR_ADD_ERROR'), dalay:4000});
+    });
   }
 
   $scope.deletePerson = function(){

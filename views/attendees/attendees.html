@@ -1,0 +1,87 @@
+<div id="delete" class="modal">
+    <div class="modal-content">
+        <h4>{{'ARE_YOU_SURE' | translate}}</h4>
+        <p>{{'CONFIRM_DELETE_PERSON' | translate}}</p>
+    </div>
+    <div class="modal-footer">
+        <a href="" class="modal-action modal-close waves-effect waves-light btn red" ng-click="deletePerson()">{{'YES' | translate}}</a>
+        <a href="" class="modal-action modal-close waves-effect waves-light btn-flat">{{'NO' | translate}}</a>
+    </div>
+</div>
+
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>{{'ADD_ATTENDEE' | translate}}</h4>
+
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <input ng-model="attendee.first_name" id="first_name" type="text" class="validate">
+              <label for="first_name">{{'FIRST_NAME' | translate}}</label>
+            </div>
+            <div class="input-field col s6">
+              <input ng-model="attendee.last_name" id="last_name" type="text" class="validate">
+              <label for="last_name">{{'LAST_NAME' | translate}}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input ng-model="attendee.email" id="email" type="email" class="validate">
+              <label for="email">{{'EMAIL' | translate}}</label>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a ng-click="addAttendee()" class="modal-action modal-close waves-effect waves-green btn-flat ">{{'ADD_ADMINISTRATOR' | translate}}</a>
+    </div>
+  </div>
+
+<div ng-init="init()" id="people">
+  <div class="row white z-depth-2">
+    <h1>{{'ATTENDEES' | translate}}</h1>
+
+    <div class="progress" ng-show="loading">
+      <div class="indeterminate"></div>
+    </div>
+
+    <div class="helper" ng-show="!people.length && !loading">
+      {{'NO_PEOPLE' | translate}}
+    </div>
+    <a href="#modal1"  modal class="btn waves-effect waves-light blue darken-4"><i class="fa fa-plus left"></i>{{'ADD_ATTENDEE' | translate}}</a>
+    <a href="#delete" modal  class="btn waves-effect waves-light red"><i class="fa fa-trash left"></i>{{'DELETE_SELECTED' | translate}}</a>
+
+    <div ng-show="!loading && people.length">
+      <div class="col m12 l12 s12 input-field">
+        <label for="search">{{'SEARCH' | translate}}</label>
+        <input type="text" id="search" ng-model="search">
+      </div>
+    </div>
+
+    <table class="col s12 m12 l12 responsive-table bordered highlight" ng-show="!loading && people.length">
+      <thead>
+        <tr>
+          <th data-field="c"><input type="checkbox" id="selectAll" class="filled-in blue" ng-model="all" ng-click="selectAll()"/><label for="selectAll">{{'SELECT_ALL' | translate}}</label></th>
+          <th  data-field="first_name">{{'FIRST_NAME' | translate}}</th>
+          <th  data-field="last_name">{{'LAST_NAME' | translate}}</th>
+          <th data-field="email">{{'EMAIL' | translate}}</th>
+          <th data-field="email">{{'ATTENDED' | translate}}</th>
+          <th data-field="sent">{{'ACCREDIT' | translate}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="s in people | localeOrderBy:'name' | filter: search" >
+          <td><input type="checkbox" class="filled-in blue" ng-model="s.value" id="{{s._id}}" /><label for="{{s._id}}"></label></td>
+          <td>{{s.first_name}}</td>
+          <td>{{s.last_name}}</td>
+          <td>{{s.email}}</td> 
+          <td><a class="btn-flat waves-effect waves-light blue-text text-darken-4"><i class="fa fa-check" ng-show="s.attended"></i></a></td>
+          <td><a href="" ng-click="accreditAttendee(s._id)" class="btn-flat waves-effect waves-light blue-text text-darken-4"><i class="fa fa-edit" ng-show="!s.attended"></i></a></td>
+       </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<link rel="stylesheet" href="/views/attendees/attendees.css">
