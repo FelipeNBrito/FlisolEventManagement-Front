@@ -1,5 +1,5 @@
 var config = {
-  server: "https://flisoleventmanagement.herokuapp.com"
+  server: "http://192.168.1.17:5051"
 };
 
 var app = angular.module('event', ['ui.router', 'ngCookies', 'ngMessages', 'pascalprecht.translate', 'ngSanitize',
